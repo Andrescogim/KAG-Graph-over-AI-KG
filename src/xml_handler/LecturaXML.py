@@ -1,8 +1,10 @@
 import xml.etree.ElementTree as ET
 
 class LecturaXML:
-    def __init__(self, ruta):
-        self.tree = ET.parse(ruta)
+    def __init__(self, xml):
+        path = "C:/Users/andre/OneDrive/Escritorio/TFM/KAG/AI-KG/Project/KAG-Graph-over-AI-KG/data/processed/xml/"
+        file = f"{path}{xml}.xml"
+        self.tree = ET.parse(file)
         self.root = self.tree.getroot()
 
     def get_abs(self):
