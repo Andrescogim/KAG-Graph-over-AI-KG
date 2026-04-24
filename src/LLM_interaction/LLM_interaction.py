@@ -12,7 +12,7 @@ class LlamadaLLM:
 
 
 
-    def chat(modelo, prompt):
+    def chat(modelo, prompt, opciones):
 
         response = ollama.chat(
             model = modelo,
@@ -20,21 +20,26 @@ class LlamadaLLM:
                 'role': 'user',
                 'content': prompt,
                 }],
-            options = {
-                'temperature': 0
-            },
+            options = opciones,
         )
         return response.message.content
 
 
 
-    def generate(modelo, prompt):
+    def generate(modelo, prompt, opciones):
 
         response = ollama.generate(
             model = modelo,
             prompt = prompt,
-            options = {
-                'temperature': 0
-            },
+            options = opciones,
         )
         return response.response
+
+
+    def reset(modelo):
+
+        ollama.chat(
+            model = modelo,
+            messages = [],
+            keep_alive=0
+        )
