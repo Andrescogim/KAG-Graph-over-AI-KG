@@ -19,7 +19,7 @@ class GuardarResultados:
 
 
 
-    def guardar_registro(files, modelo_LLM, prompt, opciones_LLM, n_abs, t_ejecucion, ratio_validas):
+    def guardar_registro(comentarios, files, modelo_LLM, prompt, opciones_LLM, n_abs, t_ejecucion, ratio_validas):
         """
             Guarda registro de ejecucion.
             En un txt se guarda:
@@ -38,6 +38,7 @@ class GuardarResultados:
 
         with open(out_file, "w", encoding="utf-8") as f:
             f.write(f"fecha_ejecucion: {fecha_hora}\n\n")
+            f.write(f"Comentarios: {comentarios}\n\n")
             f.write(f"archivos_utilizados: {files}\n\n")
             f.write(f"Nº abstracts procesados: {n_abs}\n\n")
             f.write(f"Respuestas con formato valido: {ratio_validas*100}%\n\n")
